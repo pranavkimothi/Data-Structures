@@ -1,0 +1,83 @@
+// MY 10th PROGRAM WITH MYCAPTAIN (AVIRAL SIR)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Create a node
+struct Node {
+  char name[100];
+  int age;
+  long int phno;
+  long int salary;
+  struct Node* next;
+};
+
+void insert(struct Node* node, char name1[100], int age1, long int phno1, long int salary1) {
+
+
+  struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+  struct Node* last = node;
+  if(node == NULL)
+  {
+  strcpy(new_node->name, name1);
+  new_node->age = age1;
+  new_node->phno = phno1;
+  new_node->salary = salary1;
+  new_node->next = NULL;
+  node = new_node;
+  }
+
+  else
+  {
+  strcpy(new_node->name, name1);
+  new_node->age = age1;
+  new_node->phno = phno1;
+  new_node->salary = salary1;
+  new_node->next = NULL;
+
+        while (last->next != NULL)
+              last = last->next;
+
+     last->next = new_node;
+  }
+}
+
+
+void printList(struct Node* node) {
+  while (node != NULL) {
+    printf(" Name %c \n ",node->name);
+    printf(" Age %d \n", node->age);
+    printf(" Phone No %ld \n", node->phno);
+    printf(" Salary %ld \n", node->salary);
+    node = node->next;
+  }
+}
+
+
+int main() {
+  struct Node* head = NULL;
+  char n[100];
+  int a,i;
+  long int pn,s;
+
+  for(i=0;i<20;i++)
+  {
+  printf("\nPlease enter name ");
+  scanf("%s",n);
+
+  printf("Please enter age ");
+  scanf("%d",&a);
+
+  printf("Please enter phone number ");
+  scanf("%d",&pn);
+
+  printf("Please enter salary ");
+  scanf("%d",&s);
+
+  insert(head, n, a, pn, s);
+  }
+
+  printf("\nThe data is: \n");
+  printList(head);
+}
